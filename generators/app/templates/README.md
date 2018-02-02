@@ -19,3 +19,4 @@ Admin Interface : http://localhost:80
 ## NLP
 
 - You should deploy your NLP for training, or train on local and then export your model
+- You will find pre trained exports sentences inf folder pre trained data. You can import this sentences in your bot to gain some time
