@@ -42,7 +42,7 @@ module.exports = class extends Generator {
         'git@github.com:voyages-sncf-technologies/tock-bot-open-data.git'
       );
       execSync('mv tock-bot-open-data ' + this.props.name);
-      execSync('rm -r ' + this.props.name + '/.git');
+      execSync('rm -r ' + this.props.name + '/tock-bot-open-data/.git');
       console.log('Git clone ok.');
     } catch (error) {
       console.log('Git clone failed :', error);
