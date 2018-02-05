@@ -129,6 +129,13 @@ module.exports = class extends Generator {
       }
     );
     this.fs.copyTpl(
+      this.templatePath('bot-init.json'),
+      this.destinationPath(this.props.name + '/bot-kotlin-client/src/main/resources/bot-init.json'),
+      {
+        name: this.props.name
+      }
+    );
+    this.fs.copyTpl(
       this.templatePath('kotlin/**.kt'),
       this.destinationPath(
         this.props.name + '/bot-kotlin-client/src/main/kotlin/fr/vsct/tock/bot/open/data/'
