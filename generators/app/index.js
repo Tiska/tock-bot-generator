@@ -123,14 +123,18 @@ module.exports = class extends Generator {
     );
     this.fs.copyTpl(
       this.templatePath('sentences/**.json'),
-      this.destinationPath(this.props.name + '/bot-kotlin-client/src/main/resources/sentences'),
+      this.destinationPath(
+        this.props.name + '/bot-kotlin-client/src/main/resources/sentences'
+      ),
       {
         name: this.props.name
       }
     );
     this.fs.copyTpl(
       this.templatePath('bot-init.json'),
-      this.destinationPath(this.props.name + '/bot-kotlin-client/src/main/resources/bot-init.json'),
+      this.destinationPath(
+        this.props.name + '/bot-kotlin-client/src/main/resources/bot-init.json'
+      ),
       {
         name: this.props.name
       }
@@ -171,5 +175,15 @@ module.exports = class extends Generator {
         }
       );
     }
+    this.fs.copyTpl(
+      this.templatePath('conf.properties'),
+      this.destinationPath(
+        this.props.name + '/bot-kotlin-client/src/main/resources/conf.properties'
+      ),
+      {
+        connectors: this.props.connectors,
+        name: this.props.name
+      }
+    );
   }
 };
