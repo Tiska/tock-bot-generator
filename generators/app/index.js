@@ -123,7 +123,7 @@ module.exports = class extends Generator {
     );
     this.fs.copyTpl(
       this.templatePath('sentences/**.json'),
-      this.destinationPath(this.props.name + '/sentences/'),
+      this.destinationPath(this.props.name + '/bot-kotlin-client/src/main/resources/sentences'),
       {
         name: this.props.name
       }
