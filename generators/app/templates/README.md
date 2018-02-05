@@ -8,7 +8,13 @@ docker-compose up
 
 Admin Interface : http://localhost:80
 
-## Init NLP
+## Init NLP (using FirstInit.kt)
+
+- FirstInit.kt will :
+  - Init Bot App
+  - Pre Train Bot 
+
+## Init NLP (if not using FirstInit.kt)
 
 - Create new application
 - Add name
@@ -20,3 +26,7 @@ Admin Interface : http://localhost:80
 
 - You should deploy your NLP for training, or train on local and then export your model
 - You will find pre trained exports sentences inf folder pre trained data. You can import this sentences in your bot to gain some time
+
+## Client
+
+- Use mvn install to install bot client dependencies

@@ -16,8 +16,24 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'name',
-        message: 'your bot name',
+        message: 'Your bot name (should be bot-name or bot_name format)',
         default: this.appname
+      },
+      {
+        type: 'checkbox',
+        name: 'connectors',
+        message: 'What connectors do you need ?',
+        choices: [
+          {
+            name: 'Facebook',
+            value: 'facebook'
+          },
+          {
+            name: 'Google',
+            value: 'google'
+          }
+          //
+        ]
       }
     ];
 
@@ -112,5 +128,41 @@ module.exports = class extends Generator {
         name: this.props.name
       }
     );
+    this.fs.copyTpl(
+      this.templatePath('kotlin/**.kt'),
+      this.destinationPath(
+        this.props.name + '/bot-kotlin-client/src/main/kotlin/fr/vsct/tock/bot/open/data/'
+      ),
+      {
+        connectors: this.props.connectors,
+        name: this.props.name
+      }
+    );
+    if (this.props.connectors.indexOf('google') > -1) {
+      this.fs.copyTpl(
+        this.templatePath('connectors/GoogleAssistantConfiguration.kt'),
+        this.destinationPath(
+          this.props.name +
+            '/bot-kotlin-client/src/main/kotlin/fr/vsct/tock/bot/open/data/GoogleAssistantConfiguration.kt'
+        ),
+        {
+          connectors: this.props.connectors,
+          name: this.props.name
+        }
+      );
+    }
+    if (this.props.connectors.indexOf('facebook') > -1) {
+      this.fs.copyTpl(
+        this.templatePath('connectors/MessengerConfiguration.kt'),
+        this.destinationPath(
+          this.props.name +
+            '/bot-kotlin-client/src/main/kotlin/fr/vsct/tock/bot/open/data/MessengerConfiguration.kt'
+        ),
+        {
+          connectors: this.props.connectors,
+          name: this.props.name
+        }
+      );
+    }
   }
 };
