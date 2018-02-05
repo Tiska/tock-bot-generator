@@ -26,7 +26,7 @@ import fr.vsct.tock.bot.registerAndInstallBot
 import fr.vsct.tock.nlp.entity.ValueResolverRepository
 
 fun main(args: Array<String>) {
-  Start.start()
+  FirstInit.start()
 }
 
 /**
