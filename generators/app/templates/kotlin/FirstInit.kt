@@ -20,10 +20,7 @@
 package fr.vsct.tock.bot.open.data
 
 import fr.vsct.tock.bot.engine.BotRepository
-import fr.vsct.tock.bot.importI18nDump
 import fr.vsct.tock.bot.importNlpDump
-import fr.vsct.tock.bot.open.data.GoogleAssistantConfiguration.registerGoogleAssistantConnector
-import fr.vsct.tock.bot.open.data.MessengerConfiguration.registerMessengerConnector
 import fr.vsct.tock.bot.open.data.entity.PlaceValue
 import fr.vsct.tock.bot.registerAndInstallBot
 import fr.vsct.tock.nlp.entity.ValueResolverRepository
@@ -35,7 +32,7 @@ fun main(args: Array<String>) {
 /**
  * This is the entry point of the bot.
  */
-object Start {
+object FirstInit {
 
   fun start() {
     BotRepository.registerNlpListener(OpenDataNlpListener)
