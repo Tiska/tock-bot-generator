@@ -38,6 +38,7 @@ object FirstInit {
     BotRepository.registerNlpListener(OpenDataNlpListener)
     registerAndInstallBot(openBot)
     importNlpDump("/bot-init.json")
+    exitProcess(0)
   }
 
   private fun setup() {
