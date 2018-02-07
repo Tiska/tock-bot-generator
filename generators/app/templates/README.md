@@ -30,3 +30,7 @@ Admin Interface : http://localhost:80
 ## Client
 
 - Use mvn install to install bot client dependencies
+
+## Mongo Conversiational (optional)
+
+docker run -p 27017:27017 --name mongo-bot -d mongo
