@@ -42,6 +42,9 @@ object Start {
     val loader = Thread.currentThread().contextClassLoader
     val props = Properties()
     loader.getResourceAsStream(resourceName).use { resourceStream -> props.load(resourceStream) }
+    props.toList().forEach {
+      System.setProperty(it.first as String, it.second as String)
+    }
     setup()
 
     <% if (connectors.indexOf('google') > - 1) { %>registerGoogleAssistantConnector()<% } %>

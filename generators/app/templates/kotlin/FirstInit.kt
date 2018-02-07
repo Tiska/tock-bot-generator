@@ -39,6 +39,9 @@ object FirstInit {
     val loader = Thread.currentThread().contextClassLoader
     val props = Properties()
     loader.getResourceAsStream(resourceName).use { resourceStream -> props.load(resourceStream) }
+    props.toList().forEach {
+      System.setProperty(it.first as String, it.second as String)
+    }
     BotRepository.registerNlpListener(OpenDataNlpListener)
     registerAndInstallBot(openBot)
     importNlpDump("/bot-init.json")
