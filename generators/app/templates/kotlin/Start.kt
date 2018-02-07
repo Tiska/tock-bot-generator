@@ -38,6 +38,10 @@ fun main(args: Array<String>) {
 object Start {
 
   fun start() {
+    val resourceName = "conf.properties"
+    val loader = Thread.currentThread().contextClassLoader
+    val props = Properties()
+    loader.getResourceAsStream(resourceName).use { resourceStream -> props.load(resourceStream) }
     setup()
 
     <% if (connectors.indexOf('google') > - 1) { %>registerGoogleAssistantConnector()<% } %>

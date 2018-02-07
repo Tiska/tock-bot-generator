@@ -35,9 +35,19 @@ fun main(args: Array<String>) {
 object FirstInit {
 
   fun start() {
+    val resourceName = "conf.properties"
+    val loader = Thread.currentThread().contextClassLoader
+    val props = Properties()
+    loader.getResourceAsStream(resourceName).use { resourceStream -> props.load(resourceStream) }
     BotRepository.registerNlpListener(OpenDataNlpListener)
     registerAndInstallBot(openBot)
     importNlpDump("/bot-init.json")
+
+    <% sentences.map(sentence => {
+      %>importNlpSentencesDump("/sentences/<%= sentence %>")
+      <%
+    }) %>
+
     exitProcess(0)
   }
 

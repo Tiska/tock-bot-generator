@@ -34,6 +34,105 @@ module.exports = class extends Generator {
           }
           //
         ]
+      },
+      {
+        type: 'checkbox',
+        name: 'sentences',
+        message: 'What pre trained sentences do you need ?',
+        choices: [
+          {
+            name: 'Goodbye',
+            value: 'goodbye_sentences.json'
+          },
+          {
+            name: 'Gratitude',
+            value: 'gratitude_sentences.json'
+          },
+          {
+            name: 'Greetings',
+            value: 'greetings_sentences.json'
+          },
+          {
+            name: 'Help',
+            value: 'help_sentences.json'
+          },
+          {
+            name: 'How are You',
+            value: 'how_are_you_sentences.json'
+          },
+          {
+            name: 'Search Switch',
+            value: 'search_switch_sentences.json'
+          },
+          {
+            name: 'Jokes',
+            value: 'joke_sentences.json'
+          },
+          {
+            name: 'Select',
+            value: 'select_sentences.json'
+          },
+          {
+            name: 'Previous Trains',
+            value: 'previous_trains_sentences.json'
+          },
+          {
+            name: 'Not understood',
+            value: 'not_understood_sentences.json'
+          },
+          {
+            name: 'Reset',
+            value: 'reset_sentences.json'
+          },
+          {
+            name: 'Next trains',
+            value: 'next_trains_sentences.json'
+          },
+          {
+            name: 'Inspiration',
+            value: 'inspiration_sentences.json'
+          },
+          {
+            name: 'Repeat',
+            value: 'repeat_sentences.json'
+          },
+          {
+            name: 'Insult',
+            value: 'insult_sentences.json'
+          },
+          {
+            name: 'No',
+            value: 'no_sentences.json'
+          },
+          {
+            name: 'Perplexity',
+            value: 'perplexity_sentences.json'
+          },
+          {
+            name: 'Wrong Answer',
+            value: 'wrong_answer_sentences.json'
+          },
+          {
+            name: 'Search',
+            value: 'search_sentences.json'
+          },
+          {
+            name: 'Yes',
+            value: 'yes_sentences.json'
+          },
+          {
+            name: 'Purchase',
+            value: 'purchase_sentences.json'
+          },
+          {
+            name: 'Sorry',
+            value: 'sorry_sentences.json'
+          },
+          {
+            name: 'Who are you',
+            value: 'who_are_you_sentences.json'
+          }
+        ]
       }
     ];
 
@@ -105,6 +204,25 @@ module.exports = class extends Generator {
       console.log('Rename Bot failed :', error);
     }
   }
+  cleanResources() {
+    this.log('Clean Files Resources');
+    execSync(
+      'rm ' +
+        this.props.name +
+        '/bot-kotlin-client/src/main/resources/google_actions_fr.json'
+    );
+    execSync(
+      'rm ' + this.props.name + '/bot-kotlin-client/src/main/resources/labels.json'
+    );
+    execSync(
+      'rm ' +
+        this.props.name +
+        '/bot-kotlin-client/src/main/resources/google_actions_en.json'
+    );
+    execSync(
+      'rm ' + this.props.name + '/bot-kotlin-client/src/main/resources/bot_open_data.json'
+    );
+  }
   writing() {
     // Create README
     this.fs.copyTpl(
@@ -117,15 +235,6 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('.gitignore'),
       this.destinationPath(this.props.name + '/.gitignore'),
-      {
-        name: this.props.name
-      }
-    );
-    this.fs.copyTpl(
-      this.templatePath('sentences/**.json'),
-      this.destinationPath(
-        this.props.name + '/bot-kotlin-client/src/main/resources/sentences'
-      ),
       {
         name: this.props.name
       }
@@ -146,7 +255,8 @@ module.exports = class extends Generator {
       ),
       {
         connectors: this.props.connectors,
-        name: this.props.name
+        name: this.props.name,
+        sentences: this.props.sentences
       }
     );
     if (this.props.connectors.indexOf('google') > -1) {
@@ -185,5 +295,18 @@ module.exports = class extends Generator {
         name: this.props.name
       }
     );
+    this.props.sentences.map(sentence => {
+      this.fs.copyTpl(
+        this.templatePath('sentences/' + sentence),
+        this.destinationPath(
+          this.props.name + '/bot-kotlin-client/src/main/resources/sentences/' + sentence
+        ),
+        {
+          connectors: this.props.connectors,
+          name: this.props.name,
+          sentences: this.props.sentences
+        }
+      );
+    });
   }
 };
