@@ -61,10 +61,6 @@ module.exports = class extends Generator {
             value: 'how_are_you_sentences.json'
           },
           {
-            name: 'Search Switch',
-            value: 'search_switch_sentences.json'
-          },
-          {
             name: 'Jokes',
             value: 'joke_sentences.json'
           },
@@ -111,10 +107,6 @@ module.exports = class extends Generator {
           {
             name: 'Wrong Answer',
             value: 'wrong_answer_sentences.json'
-          },
-          {
-            name: 'Search',
-            value: 'search_sentences.json'
           },
           {
             name: 'Yes',
