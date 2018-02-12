@@ -34,3 +34,7 @@ Admin Interface : http://localhost:80
 ## Mongo Conversiational (optional)
 
 docker run -p 27017:27017 --name mongo-bot -d mongo:latest --smallfiles
+
+## Namespace
+
+TODO add this param to admn web docker - tock_organizations=vsc or switch all namespaces to app (organization default)
