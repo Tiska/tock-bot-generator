@@ -40,7 +40,8 @@ val openBot = bot(
                 search,
                 changeLanguage
         ),
-        hello = greetings
+        hello = greetings,
+        namespace = "vsc"
 )
 
 /**
