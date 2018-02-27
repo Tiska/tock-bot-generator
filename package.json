@@ -1,7 +1,7 @@
 {
-  "name": "generator-oui-bot",
-  "version": "0.0.0",
-  "description": "Oui Bot Generator",
+  "name": "generator-tock-bot",
+  "version": "1.0.0",
+  "description": "Tock Bot Generator",
   "homepage": "",
   "author": {
     "name": "abody",

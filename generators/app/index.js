@@ -9,7 +9,7 @@ module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay('Welcome to the impressive ' + chalk.red('generator-oui-bot') + ' generator!')
+      yosay('Welcome to the impressive ' + chalk.red('Tock Bot') + ' generator!')
     );
 
     const prompts = [
@@ -65,28 +65,12 @@ module.exports = class extends Generator {
             value: 'joke_sentences.json'
           },
           {
-            name: 'Select',
-            value: 'select_sentences.json'
-          },
-          {
-            name: 'Previous Trains',
-            value: 'previous_trains_sentences.json'
-          },
-          {
             name: 'Not understood',
             value: 'not_understood_sentences.json'
           },
           {
             name: 'Reset',
             value: 'reset_sentences.json'
-          },
-          {
-            name: 'Next trains',
-            value: 'next_trains_sentences.json'
-          },
-          {
-            name: 'Inspiration',
-            value: 'inspiration_sentences.json'
           },
           {
             name: 'Repeat',
@@ -111,10 +95,6 @@ module.exports = class extends Generator {
           {
             name: 'Yes',
             value: 'yes_sentences.json'
-          },
-          {
-            name: 'Purchase',
-            value: 'purchase_sentences.json'
           },
           {
             name: 'Sorry',

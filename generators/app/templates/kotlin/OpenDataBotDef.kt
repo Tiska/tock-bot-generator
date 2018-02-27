@@ -41,7 +41,7 @@ val openBot = bot(
                 changeLanguage
         ),
         hello = greetings,
-        namespace = "vsc"
+        namespace = "app"
 )
 
 /**
